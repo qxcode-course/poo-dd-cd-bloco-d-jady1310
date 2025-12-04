@@ -2,8 +2,28 @@
     "patches": [
         {
             "label": "2025-12-04_01-00-03",
-            "content": "",
+            "content": "@@ -1,156 +0,0 @@\n-class Fone:%0A    def __init__(self, id:str, number:str):%0A        self.__id=id%0A        self.__number=number%0A    %0A    def Fone(selfid:str,number:str):%0A        \n",
             "lines": "0"
+        },
+        {
+            "label": "2025-12-04_01-11-35",
+            "content": "@@ -116,122 +116,41 @@\n def \n-isValid(self) -%3E bool:%0A        valid = %220123456789().%22%0A        return all(c in valid for c in self.__number)\n+Fone(selfid:str,number:str):\n %0A    \n-%0A\n     \n",
+            "lines": "7"
+        },
+        {
+            "label": "2025-12-04_01-15-51",
+            "content": "@@ -234,1303 +234,4 @@\n     \n-def getId(self)-%3Estr:%0A        return self.__id%0A    def getNumber(self)-%3Estr:%0A        return self.__number%0A    def toString(self) -%3E str:%0A        return f%22%7Bself.__id%7D:%7Bself.__number%7D%22%0A%0Aclass Contact:%0A    def __init__(self, name:str=%22 %22):%0A        self.__favorited=False%0A        self.__name=name%0A        self.__fones:list%5BFone%5D=%5B%5D%0A    %0A    def addFone(self, id: str, number: str) -%3E None:%0A        fone = Fone(id, number)%0A        if fone.isValid():%0A            self.__fones.append(fone)%0A        else:%0A            print(f%22fail: fone invalido '%7Bnumber%7D'%22)%0A%0A     def rmFone(self, index: int) -%3E None:%0A        if 0 %3C= index %3C len(self.__fones):%0A            self.__fones.pop(index)%0A        else:%0A            print(%22fail: indice invalido%22)%0A    %0A    def toogleFavorited(self) -%3E None:%0A        self.__favorited = not self.__favorited%0A%0A    def isFavorited(self) -%3E bool:%0A        return self.__favorited%0A    %0A    def getName(self) -%3E str:%0A        return self.__name%0A%0A    def setName(self, name: str) -%3E None:%0A        self.__name = name%0A    %0A    def getFones(self) -%3E list:%0A        return self.__fones%0A    %0A    def toString(self) -%3E str:%0A        prefix = %22@%22 if self.__favorited else %22%22%0A        fones_str = %22, %22.join(fone.toString() for fone in self.__fones)%0A        return f%22- %7Bprefix%7D%7Bself.__name%7D %5B%7Bfones_str%7D%5D%22\n",
+            "lines": "10"
+        },
+        {
+            "label": "2025-12-04_01-22-09",
+            "content": "@@ -781,24 +781,25 @@\n er%7D'%22)%0A%0A    \n+ \n def rmFone(s\n",
+            "lines": "54"
+        },
+        {
+            "label": "2025-12-04_01-22-28",
+            "content": "class Fone:\n    def __init__(self, id:str, number:str):\n        self.__id=id\n        self.__number=number\n    \n    def isValid(self) -> bool:\n        valid = \"0123456789().\"\n        return all(c in valid for c in self.__number)\n    \n    def getId(self)->str:\n        return self.__id\n    def getNumber(self)->str:\n        return self.__number\n    def toString(self) -> str:\n        return f\"{self.__id}:{self.__number}\"\n\nclass Contact:\n    def __init__(self, name:str=\" \"):\n        self.__favorited=False\n        self.__name=name\n        self.__fones:list[Fone]=[]\n    \n    def addFone(self, id: str, number: str) -> None:\n        fone = Fone(id, number)\n        if fone.isValid():\n            self.__fones.append(fone)\n        else:\n            print(f\"fail: fone invalido '{number}'\")\n\n    def rmFone(self, index: int) -> None:\n        if 0 <= index < len(self.__fones):\n            self.__fones.pop(index)\n        else:\n            print(\"fail: indice invalido\")\n    \n    def toogleFavorited(self) -> None:\n        self.__favorited = not self.__favorited\n\n    def isFavorited(self) -> bool:\n        return self.__favorited\n    \n    def getName(self) -> str:\n        return self.__name\n\n    def setName(self, name: str) -> None:\n        self.__name = name\n    \n    def getFones(self) -> list:\n        return self.__fones\n    \n    def toString(self) -> str:\n        prefix = \"@\" if self.__favorited else \"\"\n        fones_str = \", \".join(fone.toString() for fone in self.__fones)\n        return f\"- {prefix}{self.__name} [{fones_str}]\"",
+            "lines": "54"
         }
     ]
 }
